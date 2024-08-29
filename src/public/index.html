@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Airport Data</title>
+</head>
+<body>
+    <h1>Fetch Airport Data</h1>
+    <button id="fetchData">Get Airport Data</button>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/airport/AGR');
+                const data = await response.json();
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('result').textContent = 'Failed to fetch data.';
+            }
+        });
+    </script>
+</body>
+</html>
